@@ -1,0 +1,43 @@
+{
+    "name": "Chez J&J — Sandwicherie & Tacos",
+    "short_name": "Chez J&J",
+    "description": "Food-truck tacos, burgers, paninis et frites fraîches à Villeneuve-lès-Béziers. Ouvert le midi.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#17100d",
+    "theme_color": "#d35a24",
+    "orientation": "portrait-primary",
+    "lang": "fr",
+    "icons": [
+        {
+            "src": "images/logo_chez_j_and_j.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "food",
+        "restaurant"
+    ],
+    "shortcuts": [
+        {
+            "name": "Appeler",
+            "short_name": "Appel",
+            "description": "Appeler Chez J&J directement",
+            "url": "tel:+33766342848"
+        },
+        {
+            "name": "Voir le Menu",
+            "short_name": "Menu",
+            "description": "Consulter la carte",
+            "url": "/#menu"
+        },
+        {
+            "name": "Itinéraire",
+            "short_name": "Trajet",
+            "description": "Voir l'itinéraire vers le food-truck",
+            "url": "https://maps.google.com/?q=4+Rue+du+Saint-Victor+34500+Villeneuve-l%C3%A8s-B%C3%A9ziers"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Bloquer les pages admin
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://chezjandjvlb.fr/sitemap.xml

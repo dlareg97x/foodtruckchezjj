@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation Produit — Site Vitrine Restaurant / Food-Truck</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+  :root {
+    --bg: #0d0e12;
+    --surface: #13151c;
+    --surface2: #1a1d28;
+    --border: #252836;
+    --accent: #ff5f1f;
+    --accent2: #ffb347;
+    --piloton: #4f8ef7;
+    --text: #e8eaf0;
+    --muted: #7a7f9a;
+    --green: #2ecc71;
+    --orange: #f39c12;
+    --red: #e74c3c;
+    --must: #27ae60;
+    --should: #e67e22;
+    --could: #8e44ad;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── SIDEBAR ── */
+  #sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 260px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar-logo {
+    padding: 1.5rem 1.2rem 1rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar-logo h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-logo p {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  .nav-section-title {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 1rem 1.2rem 0.3rem;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.2rem;
+    color: var(--muted);
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+
+  .nav-item:hover, .nav-item.active {
+    color: var(--text);
+    border-left-color: var(--accent);
+    background: rgba(255,95,31,0.06);
+  }
+
+  .nav-item .nav-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.6;
+    min-width: 18px;
+  }
+
+  .piloton-badge {
+    display: inline-block;
+    background: rgba(79,142,247,0.15);
+    color: var(--piloton);
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+    margin-left: auto;
+  }
+
+  /* ── MAIN ── */
+  #main {
+    margin-left: 260px;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0d0e12 0%, #1a0a00 50%, #0d0e12 100%);
+    padding: 4rem 3rem 3rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,95,31,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,95,31,0.1);
+    border: 1px solid rgba(255,95,31,0.3);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 span { color: var(--accent); }
+
+  .hero-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: left;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    padding: 3rem;
+    max-width: 1000px;
+  }
+
+  .section {
+    margin-bottom: 5rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent);
+    opacity: 0.2;
+    line-height: 1;
+    min-width: 60px;
+  }
+
+  .section-title-block h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.2rem;
+  }
+
+  .section-title-block p {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ── FEATURE CARD ── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(255,95,31,0.3);
+    transform: translateY(-2px);
+  }
+
+  .feature-card.piloton-feature {
+    border-color: rgba(79,142,247,0.3);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(79,142,247,0.04) 100%);
+  }
+
+  .feature-card.piloton-feature:hover {
+    border-color: rgba(79,142,247,0.6);
+  }
+
+  .feature-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .feature-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+
+  .feature-impact {
+    font-size: 0.72rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .impact-label {
+    color: var(--muted);
+  }
+
+  .impact-value {
+    font-weight: 600;
+  }
+
+  .impact-high { color: var(--green); }
+  .impact-medium { color: var(--orange); }
+  .impact-low { color: var(--muted); }
+
+  /* ── PAGE TABLE ── */
+  .page-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .page-table th {
+    text-align: left;
+    padding: 0.6rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-table td {
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+  }
+
+  .page-table tr:hover td {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .tag-must { background: rgba(39,174,96,0.15); color: var(--must); }
+  .tag-should { background: rgba(230,126,34,0.15); color: var(--should); }
+  .tag-could { background: rgba(142,68,173,0.15); color: var(--could); }
+  .tag-mvp { background: rgba(255,95,31,0.15); color: var(--accent); }
+  .tag-v1 { background: rgba(79,142,247,0.15); color: var(--piloton); }
+  .tag-v2 { background: rgba(46,204,113,0.15); color: var(--green); }
+  .tag-seo { background: rgba(255,179,71,0.15); color: var(--accent2); }
+  .tag-piloton { background: rgba(79,142,247,0.15); color: var(--piloton); }
+  .tag-hidden { background: rgba(122,127,154,0.15); color: var(--muted); }
+  .tag-legal { background: rgba(231,76,60,0.15); color: var(--red); }
+
+  /* ── ROADMAP ── */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .roadmap-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .roadmap-header {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .roadmap-header.mvp { border-top: 3px solid var(--accent); }
+  .roadmap-header.v1 { border-top: 3px solid var(--piloton); }
+  .roadmap-header.v2 { border-top: 3px solid var(--green); }
+
+  .roadmap-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+  }
+
+  .roadmap-title.mvp { color: var(--accent); }
+  .roadmap-title.v1 { color: var(--piloton); }
+  .roadmap-title.v2 { color: var(--green); }
+
+  .roadmap-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.8rem;
+  }
+
+  .roadmap-stat {
+    flex: 1;
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 0.6rem;
+    text-align: center;
+  }
+
+  .roadmap-stat-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .roadmap-stat-label {
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+
+  .roadmap-body {
+    padding: 1rem 1.2rem;
+  }
+
+  .roadmap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .roadmap-item::before {
+    content: '→';
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .roadmap-item.v1::before { color: var(--piloton); }
+  .roadmap-item.v2::before { color: var(--green); }
+
+  /* ── PILOTON SECTION ── */
+  .piloton-block {
+    background: linear-gradient(135deg, rgba(79,142,247,0.08) 0%, rgba(79,142,247,0.03) 100%);
+    border: 1px solid rgba(79,142,247,0.25);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .piloton-block h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--piloton);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .piloton-block p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── KPI TABLE ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .kpi-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .kpi-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .kpi-desc {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  /* ── MOBILE TOGGLE ── */
+  #sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: white;
+    font-size: 1.1rem;
+  }
+
+  .section-intro {
+    background: var(--surface2);
+    border-left: 3px solid var(--accent);
+    padding: 0.8rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.5rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  hr.section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+
+  h3.subsection {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 1.5rem 0 0.8rem;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+  @media (max-width: 768px) {
+    #sidebar { transform: translateX(-100%); }
+    #sidebar.open { transform: translateX(0); }
+    #main { margin-left: 0; }
+    #sidebar-toggle { display: block; }
+    .content { padding: 1.5rem; }
+    .hero { padding: 3rem 1.5rem 2rem; }
+    .hero h1 { font-size: 2rem; }
+    .roadmap-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<button id="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <h2>📋 Product Doc</h2>
+    <p>Site Vitrine Restaurant · v1.0</p>
+  </div>
+
+  <div class="nav-section-title">Navigation</div>
+  <a class="nav-item" href="#intro"><span class="nav-num">00</span> Introduction</a>
+  <a class="nav-item" href="#s1"><span class="nav-num">01</span> Structure du site</a>
+  <a class="nav-item" href="#s2"><span class="nav-num">02</span> Modules UX</a>
+  <a class="nav-item" href="#s3"><span class="nav-num">03</span> Marketing</a>
+  <a class="nav-item" href="#s4"><span class="nav-num">04</span> SEO Local</a>
+  <a class="nav-item" href="#s5"><span class="nav-num">05</span> Performance</a>
+  <a class="nav-item" href="#s6"><span class="nav-num">06</span> Tracking</a>
+  <a class="nav-item" href="#s7"><span class="nav-num">07</span> Administration</a>
+  <a class="nav-item" href="#s8"><span class="nav-num">08</span> Automatisation</a>
+  <a class="nav-item" href="#s9"><span class="nav-num">09</span> Intégrations</a>
+  <a class="nav-item" href="#s10"><span class="nav-num">10</span> Design</a>
+  <a class="nav-item" href="#s11"><span class="nav-num">11</span> Sécurité</a>
+  <a class="nav-item" href="#s12"><span class="nav-num">12</span> Roadmap</a>
+
+  <div class="nav-section-title" style="margin-top:1rem;">Piloton</div>
+  <a class="nav-item" href="#piloton-integration" style="color: var(--piloton); border-left-color: transparent;">
+    <span class="nav-num" style="color:var(--piloton)">⚡</span> Funnel Avis
+    <span class="piloton-badge">PILOTON</span>
+  </a>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">🍔 Documentation Produit Complète</div>
+    <h1>Site Vitrine<br><span>Restaurant / Food-Truck</span></h1>
+    <p class="hero-sub">Architecture produit exhaustive · Intégration Piloton native · Roadmap MVP→V2 avec estimations temps et coût.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">12</div><div class="stat-label">Sections produit</div></div>
+      <div class="stat"><div class="stat-num">80+</div><div class="stat-label">Features identifiées</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Versions roadmap</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Mobile-first</div></div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- INTRO -->
+    <div class="section" id="intro">
+      <div class="section-header">
+        <div class="section-num">00</div>
+        <div class="section-title-block">
+          <h2>Contexte & Objectifs</h2>
+          <p>Cadrage projet — client, cible, contraintes</p>
+        </div>
+      </div>
+      <div class="piloton-block">
+        <h3>⚡ Piloton intégré dès le MVP</h3>
+        <p>Ce site vitrine n'est pas un simple site de présentation. Il est conçu comme un <strong style="color:var(--text)">outil de génération d'avis Google</strong> via le funnel Piloton. Le QR code plaquette → landing satisfaction → redirection Google est intégré nativement dans la structure du site, pas ajouté en option.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-name">🎯 Cible client</div>
+          <div class="feature-desc">Ouvriers, artisans, employés zone industrielle, étudiants. Usage mobile quasi-exclusif. Décision d'achat en moins de 30 secondes.</div>
+          <div class="feature-impact"><span class="impact-label">Implication :</span> <span class="impact-value impact-high">Design ultra-rapide, CTA immédiat</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📍 Zone géographique</div>
+          <div class="feature-desc">Local first. SEO ciblé sur ville + quartier + zone industrielle. Google Maps omniprésent.</div>
+          <div class="feature-impact"><span class="impact-label">Implication :</span> <span class="impact-value impact-high">Schema LocalBusiness obligatoire</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">⏱️ Fenêtre de décision</div>
+          <div class="feature-desc">Client du midi avec 45 min de pause. Il décide en 20s max. Le site doit convertir immédiatement.</div>
+          <div class="feature-impact"><span class="impact-label">Implication :</span> <span class="impact-value impact-high">LCP &lt; 1s, bouton tel above-the-fold</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">⭐ Réputation Google</div>
+          <div class="feature-desc">Les avis Google = levier principal de nouveaux clients. Piloton automatise la réponse et optimise le funnel de collecte.</div>
+          <div class="feature-impact"><span class="impact-label">Implication :</span> <span class="impact-value impact-high">QR code + landing Piloton = core feature</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S1 : STRUCTURE -->
+    <div class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div class="section-title-block">
+          <h2>Structure complète du site</h2>
+          <p>Toutes les pages possibles — publiques, cachées, SEO, légales</p>
+        </div>
+      </div>
+
+      <h3 class="subsection">📄 Pages Publiques Principales</h3>
+      <table class="page-table">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>URL</th>
+            <th>Rôle</th>
+            <th>Impact</th>
+            <th>Version</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Accueil</strong></td>
+            <td><code>/</code></td>
+            <td>Hero + CTA appel/itinéraire + avis en vedette + menu aperçu</td>
+            <td><span class="impact-high">★★★</span></td>
+            <td><span class="tag tag-mvp">MVP</span></td>
+          </tr>
+          <tr>
+            <td><strong>Menu / Carte</strong></td>
+            <td><code>/menu</code></td>
+            <td>Carte complète avec photos, prix, allergènes, catégories filtrables</td>
+            <td><span class="impact-high">★★★</span></td>
+            <td><span class="tag tag-mvp">MVP</span></td>
+          </tr>
+          <tr>
+            <td><strong>Avis Clients</strong></td>
+            <td><code>/avis</code></td>
+            <td>Agrégat des avis Google + badge note + CTA laisser un avis</td>
+            <td><span class="impact-high">★★★</span></td>
+            <td><span class="tag tag-mvp">MVP</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contact</strong></td>
+            <td><code>/contact</code></td>
+            <td>Tel cliquable, Google Maps intégré, horaires, formulaire simple</td>
+            <td><span class="impact-high">★★★</span></td>
+            <td><span class="tag tag-mvp">MVP</span></td>
+          </tr>
+          <tr>
+            <td><strong>Galerie Photos</strong></td>
+            <td><code>/galerie</code></td>
+            <td>Photos plats, ambiance, food-truck. Lightbox mobile-friendly.</td>
+            <td><span class="impact-medium">★★☆</span></td>
+            <td><span class="tag tag-v1">V1</span></td>
+          </tr>
+          <tr>
+            <td><strong>À Propos</strong></td>
+            <td><code>/a-propos</code></td>
+            <td>Histoire, équipe, valeurs, storytelling pour créer la confiance</td>
+            <td><span class="impact-medium">★★☆</span></td>
+            <td><span class="tag tag-v1">V1</span></td>
+          </tr>
+          <tr>
+            <td><strong>Promotions</strong></td>
+            <td><code>/promos</code></td>
+            <td>Offres en cours, formules midi, happy hours, coupons</td>
+            <td><span class="impact-medium">★★☆</span></td>
+            <td><span class="tag tag-v1">V1</span></td>
+          </tr>
+          <tr>
+            <td><strong>Actualités / Blog</strong></td>
+            <td><code>/blog</code></td>
+            <td>Posts SEO, nouveaux plats, événements. Contenu frais pour Google.</td>
+            <td><span class="impact-medium">★★☆</span></td>
+            <td><span class="tag tag-v1">V1</span></td>
+          </tr>
+          <tr>
+            <td><strong>Événements</strong></td>
+            <td><code>/evenements</code></td>
+            <td>Soirées, marchés, festivals, présence food-truck</td>
+            <td><span class="impact-medium">★★☆</span></td>
+            <td><span class="tag tag-v2">V2</span></td>
+          </tr>
+          <tr>
+            <td><strong>Commande en ligne</strong></td>
+            <td><code>/commander</code></td>
+            <td>Intégration Uber Eats / Deliveroo ou système propre</td>
+            <td><span class="impact-high">★★★</span></td>
+            <td><span class="tag tag-v2">V2</span></td>
+          </tr>
+          <tr>
+            <td><strong>Fidélité</strong></td>
+            <td><code>/fidelite</code></td>
+            <td>Programme de points, carte de fidélité digitale</td>
+            <td><span class="impact-medium">★★☆</span></td>
+            <td><span class="tag tag-v2">V2</span></td>
+          </tr>
+          <tr>
+            <td><strong>Recrutement</strong></td>
+            <td><code>/recrutement</code></td>
+            <td>Offres d'emploi, formulaire candidature spontanée</td>
+            <td><span class="impact-low">★☆☆</span></td>
+            <td><span class="tag tag-v2">V2</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="subsection">🔒 Pages Cachées / Techniques</h3>
+      <table class="page-table">
+        <thead><tr><th>Page</th><th>URL</th><th>Utilité</th><th>Version</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Landing Satisfaction Piloton</strong></td>
+            <td><code>/avis/satisfaction</code></td>
+            <td>Page post-QR code : filtre satisfait → Google / insatisfait → formulaire privé</td>
+            <td><span class="tag tag-mvp">MVP</span> <span class="tag tag-piloton">PILOTON</span></td>
+          </tr>
+          <tr>
+            <td><strong>Merci Avis Google</strong></td>
+            <td><code>/avis/merci</code></td>
+            <td>Page de remerciement après redirection vers Google</td>
+            <td><span class="tag tag-mvp">MVP</span> <span class="tag tag-piloton">PILOTON</span></td>
+          </tr>
+          <tr>
+            <td><strong>Formulaire Insatisfaction</strong></td>
+            <td><code>/avis/feedback-prive</code></td>
+            <td>Capture les retours négatifs sans les publier sur Google</td>
+            <td><span class="tag tag-mvp">MVP</span> <span class="tag tag-piloton">PILOTON</span></td>
+          </tr>
+          <tr>
+            <td><strong>Confirmation Email</strong></td>
+            <td><code>/email/confirmation</code></td>
+            <td>Confirmation double opt-in newsletter</td>
+            <td><span class="tag tag-v1">V1</span></td>
+          </tr>
+          <tr>
+            <td><strong>404 Personnalisée</strong></td>
+            <td><code>/404</code></td>
+            <td>Page erreur branded avec CTA de retour</td>
+            <td><span class="tag tag-mvp">MVP</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sitemap XML</strong></td>
+            <td><code>/sitemap.xml</code></td>
+            <td>Indexation Google automatique</td>
+            <td><span class="tag tag-mvp">MVP</span></td>
+          </tr>
+          <tr>
+            <td><strong>Admin Dashboard</strong></td>
+            <td><code>/admin</code></td>
+            <td>Interface de gestion contenu (protégée par auth)</td>
+            <td><span class="tag tag-v1">V1</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="subsection">📍 Pages SEO Locales</h3>
+      <table class="page-table">
+        <thead><tr><th>Page</th><th>URL</th><th>Keyword cible</th><th>Version</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Page ville principale</strong></td><td><code>/tacos-[ville]</code></td><td>"tacos Villeneuve-lès-Béziers"</td><td><span class="tag tag-v1">V1</span></td></tr>
+          <tr><td><strong>Page zone industrielle</strong></td><td><code>/livraison-[zone]</code></td><td>"sandwich livraison zone industrielle"</td><td><span class="tag tag-v1">V1</span></td></tr>
+          <tr><td><strong>Page repas midi</strong></td><td><code>/repas-midi-[ville]</code></td><td>"repas rapide midi [ville]"</td><td><span class="tag tag-v1">V1</span></td></tr>
+          <tr><td><strong>FAQ SEO</strong></td><td><code>/faq</code></td><td>Questions longue traîne</td><td><span class="tag tag-v1">V1</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="subsection">⚖️ Pages Légales</h3>
+      <table class="page-table">
+        <thead><tr><th>Page</th><th>URL</th><th>Obligatoire ?</th></tr></thead>
+        <tbody>
+          <tr><td>Mentions légales</td><td><code>/mentions-legales</code></td><td><span class="tag tag-must">OUI</span></td></tr>
+          <tr><td>Politique de confidentialité</td><td><code>/confidentialite</code></td><td><span class="tag tag-must">OUI (RGPD)</span></td></tr>
+          <tr><td>Politique cookies</td><td><code>/cookies</code></td><td><span class="tag tag-must">OUI (RGPD)</span></td></tr>
+          <tr><td>CGV (si commande)</td><td><code>/cgv</code></td><td><span class="tag tag-should">Si commande en ligne</span></td></tr>
+          <tr><td>Allergènes</td><td><code>/allergenes</code></td><td><span class="tag tag-must">OUI (Obligation EU)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- S2 : UX -->
+    <div class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div class="section-title-block">
+          <h2>Modules UX</h2>
+          <p>Toutes les fonctionnalités d'expérience utilisateur</p>
+        </div>
+      </div>
+      <div class="section-intro">Mobile-first absolu. L'utilisateur est debout, au soleil, avec les doigts sur smartphone. Chaque interaction doit être faisable au pouce, en moins de 2 taps.</div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-name">📞 Bouton Appeler (Sticky)</div>
+          <div class="feature-desc">Bouton tel:// toujours visible en bas de l'écran. Couleur contrastée. Jamais scrollé hors de vue.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">+30-50% de clics téléphone</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🧭 Bouton Itinéraire</div>
+          <div class="feature-desc">Lien Google Maps / Apple Maps selon l'OS détecté. One-tap navigation.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Conversion visiteur → client physique</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">⏰ Horaires Live</div>
+          <div class="feature-desc">Affichage "OUVERT" / "FERMÉ" calculé en temps réel selon les horaires configurés. Badge vert/rouge visible dès la home.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Réduction des appels pour horaires</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📌 Sticky Header Mobile</div>
+          <div class="feature-desc">Header fixe avec logo + téléphone + burger menu. Reste accessible en scrollant.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">UX fluide, accès permanent aux CTA</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🌙 Dark Mode</div>
+          <div class="feature-desc">Basculement auto selon préférence système + toggle manuel. Confort pour usage en extérieur et nuit.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Accessibilité + modernité</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📶 Mode Offline (PWA)</div>
+          <div class="feature-desc">Le menu et les infos de contact restent accessibles sans connexion (Service Worker + cache).</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Zone industrielle = connexion instable</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🔔 Notification Push (PWA)</div>
+          <div class="feature-desc">Opt-in notifications : nouvelle promo, plat du jour, horaires exceptionnels.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Canal de réengagement direct</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📱 "Installer l'app" (PWA)</div>
+          <div class="feature-desc">Prompt d'installation sur l'écran d'accueil. Icône branded. Expérience app sans store.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Fidélisation, retour client</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🎞️ Menu Filtrable / Catégories</div>
+          <div class="feature-desc">Onglets Tacos / Sandwichs / Boissons / Desserts. Filtre allergènes. Recherche rapide.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Temps de choix réduit, UX fluidifiée</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">⭐ Widget Avis Google Live</div>
+          <div class="feature-desc">Note + nombre d'avis récupérés via API (ou scraping). Badge de confiance above-the-fold.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Social proof = conversion +20%</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🍽️ Plat du Jour Dynamique</div>
+          <div class="feature-desc">Section "Aujourd'hui" mise à jour manuellement ou programmée. Affiché en hero sur mobile.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Raison de revenir chaque jour</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🖼️ Lightbox Photos Mobile</div>
+          <div class="feature-desc">Galerie swipeable, zoom pinch-to-zoom, navigation gesture. Photos optimisées WebP.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Les photos vendent</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">✨ Micro-animations</div>
+          <div class="feature-desc">Apparition au scroll, hover states, feedback tactile, skeletons de chargement.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Perception de qualité et modernité</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🍪 Bandeau RGPD</div>
+          <div class="feature-desc">Consentement cookies conforme RGPD. Mémorisation du choix. Bloquage analytics si refus.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Conformité légale obligatoire</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🔗 Partage Réseaux Sociaux</div>
+          <div class="feature-desc">Boutons de partage WhatsApp (priorité !), Facebook, Instagram pour les promos et plats.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Bouche à oreille digital</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📅 Compteur Promo</div>
+          <div class="feature-desc">Countdown timer pour les offres limitées. Crée l'urgence.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">FOMO = conversion accélérée</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S3 : MARKETING -->
+    <div class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div class="section-title-block">
+          <h2>Fonctionnalités Marketing</h2>
+          <p>Tous les outils de croissance et de fidélisation</p>
+        </div>
+      </div>
+
+      <div class="piloton-block" id="piloton-integration">
+        <h3>⚡ Intégration Piloton — Funnel Avis Natif</h3>
+        <p>Le site intègre le <strong style="color:var(--text)">funnel complet de collecte d'avis Piloton</strong> : le client scanne le QR code (plaque plexiglas branding restaurant + Piloton), arrive sur <code style="color:var(--piloton)">/avis/satisfaction</code>, choisit sa note. Si ≥ 4 étoiles → redirection directe vers Google Reviews. Si &lt; 4 étoiles → formulaire privé capturé dans le dashboard Piloton. Les réponses aux avis Google sont générées automatiquement par Claude AI (3 variantes de ton). Le restaurant reçoit une notif admin pour chaque nouvel avis.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card piloton-feature">
+          <div class="feature-name">🔲 QR Code Funnel Avis <span class="piloton-badge">PILOTON</span></div>
+          <div class="feature-desc">QR code sur plaque plexiglas double-branding → landing satisfaction → filtre Google vs. feedback privé.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">+200% avis Google en 3 mois</span></div>
+        </div>
+        <div class="feature-card piloton-feature">
+          <div class="feature-name">🤖 Réponses Auto Avis <span class="piloton-badge">PILOTON</span></div>
+          <div class="feature-desc">Claude AI génère 3 variantes de réponse par avis. Le gérant choisit ou valide. Ton personnalisé.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Gain de temps + note Google améliorée</span></div>
+        </div>
+        <div class="feature-card piloton-feature">
+          <div class="feature-name">📊 Dashboard Réputation <span class="piloton-badge">PILOTON</span></div>
+          <div class="feature-desc">Vue consolidée des avis, évolution de la note, avis non répondus, feedbacks privés.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Pilotage de l'e-réputation en temps réel</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📧 Capture Email</div>
+          <div class="feature-desc">Popup opt-in post-commande ou footer. Offre de bienvenue (coupon -10% sur prochain achat).</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Construction liste marketing owned</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">💬 WhatsApp Business</div>
+          <div class="feature-desc">Bouton WhatsApp flottant. Lien vers catalogue produit WhatsApp Business. Liste de diffusion promos.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Canal préféré des ouvriers/artisans</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🎟️ Coupon Digital</div>
+          <div class="feature-desc">Coupon unique généré à l'inscription email. Code à montrer à la caisse. Tracking de l'usage.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Incite la 1ère visite</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🏆 Programme Fidélité Digital</div>
+          <div class="feature-desc">Carte de fidélité digitale. 10 tampons = 1 repas offert. Via email ou QR code client.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Rétention client long terme</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">👥 Parrainage</div>
+          <div class="feature-desc">Lien unique de parrainage. Récompense pour le parrain + le filleul à la 1ère commande.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Acquisition virale à coût quasi-nul</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🔔 Popup Promotion</div>
+          <div class="feature-desc">Popup temporisé (après 10s) ou au scroll 50%. Offre du moment. Fermeture facile (UX non intrusive).</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">+15% de conversion sur promo en cours</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📱 SMS Marketing</div>
+          <div class="feature-desc">Collecte numéro opt-in. Envoi promo spéciale midi le lundi matin. Via Twilio ou Sendinblue.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Taux d'ouverture SMS : 98%</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📰 Newsletter Hebdo</div>
+          <div class="feature-desc">Email hebdo : plats de la semaine, promo, news. Génération semi-auto via IA.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Fidélisation et retour régulier</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🔥 Heatmap Comportemental</div>
+          <div class="feature-desc">Intégration Hotjar/Microsoft Clarity. Voir où les utilisateurs cliquent, scrollent, abandonnent.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Optimisation continue du site</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S4 : SEO -->
+    <div class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div class="section-title-block">
+          <h2>SEO Local</h2>
+          <p>Dominer Google sur la zone de chalandise</p>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-name">🏢 Schema.org LocalBusiness</div>
+          <div class="feature-desc">Markup structuré complet : nom, adresse, téléphone, horaires, menu, notation. Rich snippets dans les résultats Google.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Rich results = +35% de clics</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🍕 Schema.org Menu / FoodEstablishment</div>
+          <div class="feature-desc">Chaque plat indexé avec prix et description. Google peut afficher le menu directement dans les SERPs.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Visibilité SERP maximisée</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">⭐ Schema.org AggregateRating</div>
+          <div class="feature-desc">Note agrégée visible dans les résultats Google (étoiles dorées). Confiance immédiate.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">CTR x2 avec les étoiles</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">❓ Schema.org FAQ</div>
+          <div class="feature-desc">Questions fréquentes structurées (horaires, parking, commande) → FAQ dans les SERPs Google.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Espace SERP élargi</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📍 Google Business Profile Sync</div>
+          <div class="feature-desc">Synchronisation horaires et infos entre le site et le GBP. Cohérence NAP partout.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">SEO local renforcé</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🗺️ Pages SEO par Quartier / Zone</div>
+          <div class="feature-desc">Pages dédiées par zone : "tacos livraison [zone industrielle]", "sandwich midi [quartier]".</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Capture longue traîne locale</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📄 Sitemap XML dynamique</div>
+          <div class="feature-desc">Sitemap auto-généré à chaque ajout de contenu. Soumis à Google Search Console.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Indexation rapide</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🤖 robots.txt optimisé</div>
+          <div class="feature-desc">Exclure les pages admin, permettre tout le contenu public. Éviter le gaspillage de crawl budget.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Crawl efficace</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">⚡ Core Web Vitals</div>
+          <div class="feature-desc">LCP &lt; 1.5s, FID &lt; 100ms, CLS &lt; 0.1. Critères de ranking Google depuis 2021. Indispensable.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Facteur de classement direct</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🔗 Maillage Interne</div>
+          <div class="feature-desc">Structure de liens internes logique. Chaque page pointe vers les pages commerciales clés.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Jus SEO distribué</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">📝 Blog SEO Contenu</div>
+          <div class="feature-desc">Articles sur les mots-clés locaux : "meilleur tacos Béziers", "où manger midi [ville]". Semi-automatisé IA.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Trafic organique longue traîne</span></div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-name">🖼️ Balises OG / Twitter Cards</div>
+          <div class="feature-desc">Aperçu riche quand le lien est partagé sur WhatsApp, Facebook, etc. Photo + titre + description.</div>
+          <div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">CTR partage social x3</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S5 : PERF -->
+    <div class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div class="section-title-block">
+          <h2>Performance Technique</h2>
+          <p>Le site doit charger en moins d'1 seconde sur 4G</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card"><div class="feature-name">🖼️ Images WebP + AVIF</div><div class="feature-desc">Conversion automatique des photos en WebP/AVIF. Réduction poids images -60% sans perte de qualité visible.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">LCP réduit de 40%</span></div></div>
+        <div class="feature-card"><div class="feature-name">🦥 Lazy Loading</div><div class="feature-desc">Chargement différé des images hors viewport. Native HTML + Intersection Observer pour les composants JS.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">First Load -50% de données</span></div></div>
+        <div class="feature-card"><div class="feature-name">⚡ CDN Global</div><div class="feature-desc">Assets statiques servis depuis Cloudflare CDN. Latence minimale quelle que soit la connexion.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">TTFB &lt; 100ms</span></div></div>
+        <div class="feature-card"><div class="feature-name">📦 Minification CSS/JS</div><div class="feature-desc">Bundling, tree-shaking, minification, code splitting. Taille des fichiers réduite au minimum.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Bundle -40%</span></div></div>
+        <div class="feature-card"><div class="feature-name">📱 PWA complète</div><div class="feature-desc">Service Worker, App Manifest, cache offline, add-to-homescreen. Expérience app native sans store.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Engagement +2x, offline garanti</span></div></div>
+        <div class="feature-card"><div class="feature-name">💾 Cache Navigateur</div><div class="feature-desc">Headers Cache-Control optimisés. Assets statiques mis en cache 30 jours. HTML : no-cache pour fraîcheur.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">2ème visite instantanée</span></div></div>
+        <div class="feature-card"><div class="feature-name">🔤 Font Subsetting</div><div class="feature-desc">Ne charger que les caractères latins nécessaires. Font-display:swap pour éviter FOIT.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Fonts -70% de poids</span></div></div>
+        <div class="feature-card"><div class="feature-name">📊 PageSpeed Score 90+</div><div class="feature-desc">Audit Lighthouse automatisé en CI/CD. Score &gt; 90 en mobile comme en desktop. Non-négociable.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">SEO + UX + conversion</span></div></div>
+      </div>
+    </div>
+
+    <!-- S6 : TRACKING -->
+    <div class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div class="section-title-block">
+          <h2>Tracking & Analytics</h2>
+          <p>Mesurer pour améliorer — chaque action trackée</p>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-icon">👁️</div><div class="kpi-name">Sessions & Visiteurs</div><div class="kpi-desc">GA4 / Plausible. Unique vs. récurrents. Origines du trafic.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">📞</div><div class="kpi-name">Clics Téléphone</div><div class="kpi-desc">Événement GA4 sur chaque clic tel://. KPI n°1.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">🧭</div><div class="kpi-name">Clics Itinéraire</div><div class="kpi-desc">Événement sur clic Maps. Mesure de l'intention de visite.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">📜</div><div class="kpi-name">Scroll Depth</div><div class="kpi-desc">Jusqu'où scrollent les users (25/50/75/100%). Identifie le contenu non vu.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">🔲</div><div class="kpi-name">Scans QR Code</div><div class="kpi-desc">Paramètre UTM sur chaque QR. Source identifiée dans GA4.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-name">Funnel Avis</div><div class="kpi-desc">Taux conversion QR → satisfaction → Google. Dashbord Piloton.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">📧</div><div class="kpi-name">Capture Email</div><div class="kpi-desc">Taux de conversion popup. Taux d'ouverture newsletter.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">🏃</div><div class="kpi-name">Taux de Rebond</div><div class="kpi-desc">Par page et par source. Identifier les pages sous-performantes.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">🔥</div><div class="kpi-name">Heatmaps</div><div class="kpi-desc">Microsoft Clarity (gratuit). Zones de clic, scroll maps, sessions enregistrées.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">📍</div><div class="kpi-name">Source Géographique</div><div class="kpi-desc">Visualiser d'où viennent les visiteurs. Valider la couverture locale.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">⏱️</div><div class="kpi-name">Temps sur Page Menu</div><div class="kpi-desc">Engagement sur la page menu = indicateur d'intérêt produit.</div></div>
+        <div class="kpi-card"><div class="kpi-icon">📊</div><div class="kpi-name">Rapport Hebdo Auto</div><div class="kpi-desc">Email automatique chaque lundi : KPIs de la semaine. Pour le gérant non-tech.</div></div>
+      </div>
+    </div>
+
+    <!-- S7 : ADMIN -->
+    <div class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div class="section-title-block">
+          <h2>Administration</h2>
+          <p>Interface de gestion pensée pour un non-développeur</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card"><div class="feature-name">🍽️ Gestion Menu</div><div class="feature-desc">CRUD complet : ajouter/modifier/supprimer plats, prix, photos, catégories, allergènes. Interface drag-drop.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Autonomie totale du gérant</span></div></div>
+        <div class="feature-card"><div class="feature-name">📸 Gestion Photos</div><div class="feature-desc">Upload direct depuis smartphone. Redimensionnement auto côté serveur. Galerie drag-and-drop.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Contenu frais sans dev</span></div></div>
+        <div class="feature-card"><div class="feature-name">⏰ Gestion Horaires</div><div class="feature-desc">Horaires réguliers + exceptions (jours fériés, congés). Affiché live sur le site et GBP.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Évite les clients frustrés</span></div></div>
+        <div class="feature-card"><div class="feature-name">🎁 Gestion Promotions</div><div class="feature-desc">Créer une promo avec date de début/fin, visuel, description. Apparaît automatiquement sur le site.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Marketing agile</span></div></div>
+        <div class="feature-card piloton-feature"><div class="feature-name">⭐ Gestion Avis <span class="piloton-badge">PILOTON</span></div><div class="feature-desc">Voir tous les avis Google, avis en attente de réponse, feedbacks privés. Valider les réponses IA.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">E-réputation pilotée</span></div></div>
+        <div class="feature-card"><div class="feature-name">📧 Gestion Newsletter</div><div class="feature-desc">Liste des inscrits, envoi d'emails, templates pré-faits. Statistiques d'ouverture.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Marketing owned</span></div></div>
+        <div class="feature-card"><div class="feature-name">📊 Tableau de Bord KPIs</div><div class="feature-desc">Vue simple : visiteurs semaine, clics tel, scans QR, nouveaux avis. Pour le gérant, pas pour un analyste.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Décisions data-driven accessibles</span></div></div>
+        <div class="feature-card"><div class="feature-name">🔔 Notifications Admin</div><div class="feature-desc">Alerte email/SMS quand : nouvel avis négatif, nouveau feedback privé, nouveau message contact.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Réactivité = bouche-à-oreille maîtrisé</span></div></div>
+      </div>
+    </div>
+
+    <!-- S8 : AUTO -->
+    <div class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div class="section-title-block">
+          <h2>Automatisation</h2>
+          <p>Le site travaille seul — le gérant se concentre sur le food</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card piloton-feature"><div class="feature-name">🤖 Réponses Avis Auto <span class="piloton-badge">PILOTON</span></div><div class="feature-desc">Chaque nouvel avis Google → 3 réponses générées par Claude AI → gérant valide en 1 clic.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">100% d'avis répondus vs 20% en moyenne</span></div></div>
+        <div class="feature-card"><div class="feature-name">📱 Posts Réseaux Sociaux</div><div class="feature-desc">Génération automatique post Instagram/Facebook à partir du "plat du jour". Photo + texte + hashtags.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Présence sociale sans effort</span></div></div>
+        <div class="feature-card"><div class="feature-name">📰 Newsletter Auto</div><div class="feature-desc">Email hebdo généré à partir du menu de la semaine et des promos actives. Envoi programmé lundi 7h.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Réengagement automatique</span></div></div>
+        <div class="feature-card"><div class="feature-name">🔔 Notif Push Plat du Jour</div><div class="feature-desc">PWA push notification à 11h30 chaque jour. "Aujourd'hui : [plat]. Ouverts jusqu'à 14h."</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Rappel client au bon moment</span></div></div>
+        <div class="feature-card"><div class="feature-name">📊 Rapport Hebdo Auto</div><div class="feature-desc">Email automatique chaque lundi matin avec les KPIs de la semaine. Pour le gérant.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Pilotage sans effort</span></div></div>
+        <div class="feature-card"><div class="feature-name">🎁 Promo Automatique</div><div class="feature-desc">Promo programmée (ex: "Happy Hour mercredi 14h-16h") activée/désactivée sans intervention.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Consistance marketing</span></div></div>
+        <div class="feature-card"><div class="feature-name">📸 Backup Auto Photos</div><div class="feature-desc">Sauvegarde automatique quotidienne des photos et contenus vers cloud (S3 ou Cloudinary).</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Sécurité données</span></div></div>
+        <div class="feature-card"><div class="feature-name">🔄 Sync Google Business</div><div class="feature-desc">Synchronisation automatique des horaires et posts entre le site et Google Business Profile.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Cohérence NAP = SEO local</span></div></div>
+      </div>
+    </div>
+
+    <!-- S9 : INTEGRATIONS -->
+    <div class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div class="section-title-block">
+          <h2>Intégrations</h2>
+          <p>L'écosystème connecté autour du site</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card"><div class="feature-name">🗺️ Google Maps Embed</div><div class="feature-desc">Carte interactive intégrée. Itinéraire one-tap. Horaires GBP temps réel. Avis visibles.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Essentiel</span></div></div>
+        <div class="feature-card piloton-feature"><div class="feature-name">⭐ Google Reviews API <span class="piloton-badge">PILOTON</span></div><div class="feature-desc">Récupération et affichage des avis Google. Webhook sur nouvel avis → Piloton → réponse IA.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Réputation en vitrine</span></div></div>
+        <div class="feature-card"><div class="feature-name">📸 Instagram Feed</div><div class="feature-desc">Affichage des dernières photos Instagram sur le site. Auto-rafraîchi.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Contenu social preuve</span></div></div>
+        <div class="feature-card"><div class="feature-name">💬 WhatsApp Business API</div><div class="feature-desc">Bouton chat direct. Catalogue produit. Envoi de listes de diffusion promos.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Canal #1 cible ouvriers</span></div></div>
+        <div class="feature-card"><div class="feature-name">💳 Stripe / Paiement</div><div class="feature-desc">Paiement en ligne pour commande à emporter ou réservation. Click & Collect.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Panier moyen + fidélisation</span></div></div>
+        <div class="feature-card"><div class="feature-name">🛵 Uber Eats / Deliveroo</div><div class="feature-desc">Widget de commande intégré ou redirection vers la plateforme. Badge "disponible sur Uber Eats".</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Commande en ligne sans dev</span></div></div>
+        <div class="feature-card"><div class="feature-name">📧 Mailchimp / Brevo</div><div class="feature-desc">Synchronisation liste email. Templates newsletter. Automatisations email marketing.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Marketing email professionnel</span></div></div>
+        <div class="feature-card"><div class="feature-name">📊 Google Analytics 4</div><div class="feature-desc">Tracking complet. Événements personnalisés. Rapports e-commerce si commande en ligne.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Data-driven décisions</span></div></div>
+        <div class="feature-card"><div class="feature-name">🔍 Google Search Console</div><div class="feature-desc">Suivi performances SEO, erreurs d'indexation, mots-clés générateurs de trafic.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">SEO indispensable</span></div></div>
+        <div class="feature-card"><div class="feature-name">☁️ Cloudinary / S3</div><div class="feature-desc">Hébergement et transformation automatique des images. CDN mondial. WebP à la volée.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Performance images</span></div></div>
+        <div class="feature-card"><div class="feature-name">📱 Facebook Business</div><div class="feature-desc">Pixel Facebook pour retargeting publicitaire. Catalogue produits synchronisé.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Pub locale ciblée</span></div></div>
+        <div class="feature-card"><div class="feature-name">🤖 Claude AI (Piloton) <span class="piloton-badge">PILOTON</span></div><div class="feature-desc">API Claude pour génération réponses avis, posts sociaux, descriptions plats, newsletter.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">IA au cœur de l'automatisation</span></div></div>
+      </div>
+    </div>
+
+    <!-- S10 : DESIGN -->
+    <div class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div class="section-title-block">
+          <h2>Design</h2>
+          <p>Identité visuelle et options de personnalisation</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card"><div class="feature-name">🎨 Thème Branded</div><div class="feature-desc">Couleurs, typographie, logo du restaurant. Variables CSS globales. Charte graphique respectée.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Reconnaissance de marque</span></div></div>
+        <div class="feature-card"><div class="feature-name">🌙 Dark / Light Mode</div><div class="feature-desc">2 thèmes. Bascule auto selon OS. Persistance dans localStorage.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Confort utilisateur</span></div></div>
+        <div class="feature-card"><div class="feature-name">🔤 Typographie Distinctive</div><div class="feature-desc">Google Fonts sélectionnées. Display font pour titres (impact émotionnel), corps lisible. Font subsetting.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Identité forte</span></div></div>
+        <div class="feature-card"><div class="feature-name">📐 Design System</div><div class="feature-desc">Variables CSS cohérentes : couleurs, espacements, border-radius, ombres. Maintenance facilitée.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Cohérence + maintenabilité</span></div></div>
+        <div class="feature-card"><div class="feature-name">📱 Mobile-First CSS</div><div class="feature-desc">Design conçu en mobile first, étendu pour desktop. Breakpoints propres. Touch targets 44px min.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">80%+ trafic mobile</span></div></div>
+        <div class="feature-card"><div class="feature-name">🎞️ Animations CSS</div><div class="feature-desc">Transitions fluides, apparitions au scroll, feedback hover. Performantes (transform/opacity only).</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Perception qualité premium</span></div></div>
+        <div class="feature-card"><div class="feature-name">♿ Accessibilité WCAG 2.1</div><div class="feature-desc">Contraste ≥ 4.5:1, aria-labels, focus visible, taille police min 16px, alt images.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Légal + SEO + inclusif</span></div></div>
+        <div class="feature-card"><div class="feature-name">🖼️ Favicon + OG Image</div><div class="feature-desc">Icônes tous formats (16/32/192/512px). OG image branded pour partage réseaux sociaux.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Professionnalisme</span></div></div>
+      </div>
+    </div>
+
+    <!-- S11 : SECURITE -->
+    <div class="section" id="s11">
+      <div class="section-header">
+        <div class="section-num">11</div>
+        <div class="section-title-block">
+          <h2>Sécurité</h2>
+          <p>Protection de base non-négociable</p>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card"><div class="feature-name">🔒 HTTPS Forcé</div><div class="feature-desc">SSL/TLS obligatoire. Redirection HTTP → HTTPS. HSTS header. Let's Encrypt auto-renew.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Obligatoire — facteur SEO</span></div></div>
+        <div class="feature-card"><div class="feature-name">🤖 Anti-Spam Formulaires</div><div class="feature-desc">Honeypot fields, rate limiting, reCAPTCHA v3 invisible. Bloquer les bots sans friction UX.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Données de contact propres</span></div></div>
+        <div class="feature-card"><div class="feature-name">⏱️ Rate Limiting API</div><div class="feature-desc">Limiter les appels API (avis, formulaires, auth). Nginx / Cloudflare rate limit. Protège contre DDoS simples.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Stabilité serveur</span></div></div>
+        <div class="feature-card"><div class="feature-name">🛡️ Headers Sécurité</div><div class="feature-desc">CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy. Configuration Cloudflare.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Protection XSS/clickjacking</span></div></div>
+        <div class="feature-card"><div class="feature-name">🔐 Auth Admin Sécurisée</div><div class="feature-desc">JWT tokens, session expiry 8h, 2FA optionnel, logs de connexion, blocage après 5 échecs.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Protège l'accès back-office</span></div></div>
+        <div class="feature-card"><div class="feature-name">💾 Backup Quotidien</div><div class="feature-desc">Sauvegarde DB + fichiers chaque nuit. Retention 30 jours. Restore en 1 commande.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Continuité d'activité</span></div></div>
+        <div class="feature-card"><div class="feature-name">🔏 RGPD Compliance</div><div class="feature-desc">Consentement granulaire, droit à l'effacement, registre des traitements, DPA avec sous-traitants.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-high">Légal obligatoire en France</span></div></div>
+        <div class="feature-card"><div class="feature-name">🔍 Monitoring Uptime</div><div class="feature-desc">UptimeRobot / Better Uptime. Alerte SMS si site down &gt; 1 min.</div><div class="feature-impact"><span class="impact-label">Impact :</span> <span class="impact-value impact-medium">Réactivité en cas de panne</span></div></div>
+      </div>
+    </div>
+
+    <!-- S12 : ROADMAP -->
+    <div class="section" id="s12">
+      <div class="section-header">
+        <div class="section-num">12</div>
+        <div class="section-title-block">
+          <h2>Roadmap MVP → V2</h2>
+          <p>Temps estimé · Coût estimé · Priorités</p>
+        </div>
+      </div>
+
+      <div class="section-intro">Estimations basées sur un dev solo fullstack confirmé (environ 350€/jour ou en autoentrepreneur). Stack recommandée : Next.js + Tailwind + Supabase (ou Railway) + Cloudflare. Piloton intégré via API dès le MVP.</div>
+
+      <div class="roadmap-grid">
+
+        <!-- MVP -->
+        <div class="roadmap-card">
+          <div class="roadmap-header mvp">
+            <div class="roadmap-title mvp">MVP</div>
+            <div style="font-size:0.8rem;color:var(--muted)">Le site qui convertit dès le jour 1</div>
+            <div class="roadmap-meta">
+              <div class="roadmap-stat">
+                <div class="roadmap-stat-val">10–15j</div>
+                <div class="roadmap-stat-label">Dev solo</div>
+              </div>
+              <div class="roadmap-stat">
+                <div class="roadmap-stat-val">800–1200€</div>
+                <div class="roadmap-stat-label">Coût dev</div>
+              </div>
+              <div class="roadmap-stat">
+                <div class="roadmap-stat-val">~50€/mois</div>
+                <div class="roadmap-stat-label">Hébergement</div>
+              </div>
+            </div>
+          </div>
+          <div class="roadmap-body">
+            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Pages</div>
+            <div class="roadmap-item">Accueil hero + CTA tel/itinéraire</div>
+            <div class="roadmap-item">Page Menu avec photos et prix</div>
+            <div class="roadmap-item">Page Contact + Google Maps</div>
+            <div class="roadmap-item">Page Avis (widget Google)</div>
+            <div class="roadmap-item">Pages légales (mentions, RGPD)</div>
+            <div class="roadmap-item">Landing satisfaction Piloton</div>
+            <div class="roadmap-item">Formulaire feedback privé</div>
+
+            <div style="font-size:0.72rem;color:var(--muted);margin:0.8rem 0 0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Fonctionnalités</div>
+            <div class="roadmap-item">Bouton appel sticky mobile</div>
+            <div class="roadmap-item">Horaires live (ouvert/fermé)</div>
+            <div class="roadmap-item">Schema.org LocalBusiness</div>
+            <div class="roadmap-item">HTTPS + SSL + Cloudflare</div>
+            <div class="roadmap-item">PWA basique (offline menu)</div>
+            <div class="roadmap-item">GA4 + événements clics</div>
+            <div class="roadmap-item">QR Code funnel Piloton</div>
+            <div class="roadmap-item">Sitemap + robots.txt</div>
+            <div class="roadmap-item">Images WebP + lazy loading</div>
+            <div class="roadmap-item">PageSpeed &gt; 90 mobile</div>
+
+            <div style="margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid var(--border);font-size:0.72rem;color:var(--accent);font-weight:600;">
+              🎯 Objectif : site en ligne, convertissant, QR code Piloton actif
+            </div>
+          </div>
+        </div>
+
+        <!-- V1 -->
+        <div class="roadmap-card">
+          <div class="roadmap-header v1">
+            <div class="roadmap-title v1">V1</div>
+            <div style="font-size:0.8rem;color:var(--muted)">Le site qui fidélise et séduit</div>
+            <div class="roadmap-meta">
+              <div class="roadmap-stat">
+                <div class="roadmap-stat-val">+15–20j</div>
+                <div class="roadmap-stat-label">Dev additionnel</div>
+              </div>
+              <div class="roadmap-stat">
+                <div class="roadmap-stat-val">+1500–2500€</div>
+                <div class="roadmap-stat-label">Coût additionnel</div>
+              </div>
+              <div class="roadmap-stat">
+                <div class="roadmap-stat-val">~80€/mois</div>
+                <div class="roadmap-stat-label">Hébergement</div>
+              </div>
+            </div>
+          </div>
+          <div class="roadmap-body">
+            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Pages ajoutées</div>
+            <div class="roadmap-item v1">Galerie photos lightbox</div>
+            <div class="roadmap-item v1">À propos / storytelling</div>
+            <div class="roadmap-item v1">Pages promotions</div>
+            <div class="roadmap-item v1">Blog SEO (5 articles min)</div>
+            <div class="roadmap-item v1">Pages SEO locales (3 zones)</div>
+            <div class="roadmap-item v1">FAQ SEO Schema</div>
+
+            <div style="font-size:0.72rem;color:var(--muted);margin:0.8rem 0 0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Fonctionnalités</div>
+            <div class="roadmap-item v1">Admin CMS (menu, photos, horaires)</div>
+            <div class="roadmap-item v1">Capture email + coupon bienvenue</div>
+            <div class="roadmap-item v1">Newsletter auto (Brevo/Mailchimp)</div>
+            <div class="roadmap-item v1">WhatsApp Business intégré</div>
+            <div class="roadmap-item v1">Push notifications PWA</div>
+            <div class="roadmap-item v1">Dashboard Piloton gérant</div>
+            <div class="roadmap-item v1">Réponses avis IA (Piloton)</div>
+            <div class="roadmap-item v1">Heatmap (MS Clarity)</div>
+            <div class="roadmap-item v1">Instagram feed live</div>
+            <div class="roadmap-item v1">Popup promo + compteur</div>
+            <div class="roadmap-item v1">Rapport hebdo auto email</div>
+            <div class="roadmap-item v1">Schema AggregateRating + FAQ</div>
+
+            <div style="margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid var(--border);font-size:0.72rem;color:var(--piloton);font-weight:600;">
+              🎯 Objectif : site complet, Piloton opérationnel, base email en croissance
+            </div>
+          </div>
+        </div>
+
+        <!-- V2 -->
+        <div class="roadmap-card">
+          <div class="roadmap-header v2">
+            <div class="roadmap-title v2">V2</div>
+            <div style="font-size:0.8rem;color:var(--muted)">Le site qui génère du CA en automatique</div>
+            <div class="roadmap-meta">
+              <div class="roadmap-stat">
+                <div class="roadmap-stat-val">+20–30j</div>
+                <div class="roadmap-stat-label">Dev additionnel</div>
+              </div>
+              <div class="roadmap-stat">
+                <div class="roadmap-stat-val">+3000–5000€</div>
+                <div class="roadmap-stat-label">Coût additionnel</div>
+              </div>
+              <div class="roadmap-stat">
+                <div class="roadmap-stat-val">~150€/mois</div>
+                <div class="roadmap-stat-label">Hébergement + services</div>
+              </div>
+            </div>
+          </div>
+          <div class="roadmap-body">
+            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Features avancées</div>
+            <div class="roadmap-item v2">Commande en ligne Click & Collect</div>
+            <div class="roadmap-item v2">Paiement Stripe intégré</div>
+            <div class="roadmap-item v2">Programme fidélité digital</div>
+            <div class="roadmap-item v2">Parrainage avec lien unique</div>
+            <div class="roadmap-item v2">SMS Marketing (Twilio)</div>
+            <div class="roadmap-item v2">Coupon digital traçable</div>
+            <div class="roadmap-item v2">Page événements + gestion</div>
+            <div class="roadmap-item v2">Recrutement + candidature</div>
+            <div class="roadmap-item v2">Posts sociaux auto IA</div>
+            <div class="roadmap-item v2">Sync Google Business Profile API</div>
+            <div class="roadmap-item v2">Pixel Facebook retargeting</div>
+            <div class="roadmap-item v2">Analytics comportemental avancé</div>
+            <div class="roadmap-item v2">Multi-restaurants (scalabilité Piloton)</div>
+            <div class="roadmap-item v2">API ouverte pour intégrations tierces</div>
+
+            <div style="margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid var(--border);font-size:0.72rem;color:var(--green);font-weight:600;">
+              🎯 Objectif : machine de vente automatisée, scalable multi-clients Piloton
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RECAP BUDGET TOTAL -->
+      <div style="margin-top:2rem;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text);">💰 Budget Total Indicatif</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;">
+          <div style="text-align:center;padding:1rem;background:var(--surface);border-radius:8px;border:1px solid rgba(255,95,31,0.3);">
+            <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);">800–1 200€</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:0.2rem;">MVP (dev)</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:var(--surface);border-radius:8px;border:1px solid rgba(79,142,247,0.3);">
+            <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--piloton);">2 300–3 700€</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:0.2rem;">MVP + V1 (dev)</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:var(--surface);border-radius:8px;border:1px solid rgba(46,204,113,0.3);">
+            <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--green);">5 300–8 700€</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:0.2rem;">MVP + V1 + V2 (dev)</div>
+          </div>
+          <div style="text-align:center;padding:1rem;background:var(--surface);border-radius:8px;border:1px solid var(--border);">
+            <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent2);">50–150€/mois</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:0.2rem;">Opex hébergement</div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;font-size:0.75rem;color:var(--muted);line-height:1.6;">
+          ⚠️ <strong style="color:var(--text)">Note Piloton :</strong> Si tu livres ce site en tant que service Piloton (SaaS), le coût dev est amorti dès le 2ème client restaurant. La stack est réutilisable. Le MVP peut être livré en marque blanche pour ~500€/client après la première version.
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- /content -->
+</main>
+
+<script>
+  // Active nav on scroll
+  const sections = document.querySelectorAll('.section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(item => item.classList.remove('active'));
+        const activeNav = document.querySelector(`.nav-item[href="#${entry.target.id}"]`);
+        if (activeNav) activeNav.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('sidebar').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
