@@ -8,7 +8,7 @@
 /* ── CONFIG ──────────────────────────────────────── */
 const CONFIG = {
     phone: '+33766342848',
-    googleMapsUrl: 'https://maps.google.com/?q=Chez+J%26J+Villeneuve-les-Beziers',
+    googleMapsUrl: 'https://maps.google.com/?q=4+Rue+du+Saint-Victor+34500+Villeneuve-l%C3%A8s-B%C3%A9ziers',
     googleReviewUrl: 'https://g.page/r/VOTRE_CODE_ICI/review',
     whatsapp: 'https://wa.me/33766342848',
     ga4Id: 'G-XXXXXXXXXX', // Remplacer par votre vrai ID GA4
@@ -292,7 +292,15 @@ function initRGPD() {
     if (!consent) {
         setTimeout(() => {
             const banner = document.getElementById('rgpd-banner');
-            if (banner) banner.classList.remove('hidden');
+            if (banner) {
+                banner.classList.remove('hidden');
+                // Mesure la hauteur réelle et expose via --rgpd-h
+                requestAnimationFrame(() => {
+                    const h = banner.offsetHeight;
+                    document.documentElement.style.setProperty('--rgpd-h', h + 'px');
+                    document.body.classList.add('rgpd-visible');
+                });
+            }
         }, 1500);
     } else if (consent === 'accepted') {
         loadGA4();
@@ -302,6 +310,7 @@ function initRGPD() {
 function acceptCookies() {
     localStorage.setItem('rgpd_consent', 'accepted');
     document.getElementById('rgpd-banner')?.classList.add('hidden');
+    document.body.classList.remove('rgpd-visible');
     loadGA4();
     trackEvent('cookie_accept');
 }
@@ -309,6 +318,7 @@ function acceptCookies() {
 function refuseCookies() {
     localStorage.setItem('rgpd_consent', 'refused');
     document.getElementById('rgpd-banner')?.classList.add('hidden');
+    document.body.classList.remove('rgpd-visible');
 }
 
 function loadGA4() {
