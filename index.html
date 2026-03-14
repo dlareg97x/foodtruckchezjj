@@ -129,7 +129,7 @@
     <!-- ══ HEADER ══ -->
     <header id="header">
         <div class="header-inner">
-            <a href="#accueil" class="logo" onclick="navigate('accueil')">
+            <a href="#accueil" class="logo" onclick="handleNavClick(event, 'accueil')">
                 <img src="images/logo_chez_j_and_j.png" alt="Chez J&amp;J" class="logo-img">
                 <div class="logo-lockup">
                     <span class="logo-name">Chez J&amp;J</span>
@@ -137,14 +137,14 @@
                 </div>
             </a>
             <nav class="desktop-nav">
-                <a href="#accueil" class="nav-link" onclick="navigate('accueil')">Accueil</a>
-                <a href="#menu" class="nav-link" onclick="navigate('menu')">Menu</a>
-                <a href="#prestations" class="nav-link" onclick="navigate('prestations')">Prestations</a>
-                <a href="#avis" class="nav-link" onclick="navigate('avis')">Avis</a>
-                <a href="#contact" class="nav-link" onclick="navigate('contact')">Contact</a>
+                <a href="#accueil" class="nav-link" onclick="handleNavClick(event, 'accueil')">Accueil</a>
+                <a href="#menu" class="nav-link" onclick="handleNavClick(event, 'menu')">Menu</a>
+                <a href="#prestations" class="nav-link" onclick="handleNavClick(event, 'prestations')">Prestations</a>
+                <a href="#avis" class="nav-link" onclick="handleNavClick(event, 'avis')">Avis</a>
+                <a href="#contact" class="nav-link" onclick="handleNavClick(event, 'contact')">Contact</a>
             </nav>
             <div class="header-actions">
-                <a href="#menu" class="btn-header-secondary" onclick="navigate('menu')">La carte</a>
+                <a href="#menu" class="btn-header-secondary" onclick="handleNavClick(event, 'menu')">La carte</a>
                 <a href="tel:+33766342848" class="btn-call-header" onclick="trackEvent('call_header')">
                     <span class="btn-call-label-short">Appeler</span>
                     <span class="btn-call-label-long">07 66 34 28 48</span>
@@ -156,14 +156,15 @@
         </div>
         <!-- Mobile nav -->
         <div id="mobile-nav" class="mobile-nav hidden">
-            <a href="#accueil" onclick="navigate('accueil');toggleMenu()">Accueil</a>
-            <a href="#menu" onclick="navigate('menu');toggleMenu()">Menu</a>
-            <a href="#prestations" onclick="navigate('prestations');toggleMenu()">Prestations privées</a>
-            <a href="#avis" onclick="navigate('avis');toggleMenu()">Avis</a>
-            <a href="#contact" onclick="navigate('contact');toggleMenu()">Contact</a>
-            <a href="#mentions-legales" onclick="navigate('mentions-legales');toggleMenu()" class="legal-link">Mentions
+            <a href="#accueil" onclick="handleNavClick(event, 'accueil', true)">Accueil</a>
+            <a href="#menu" onclick="handleNavClick(event, 'menu', true)">Menu</a>
+            <a href="#prestations" onclick="handleNavClick(event, 'prestations', true)">Prestations privées</a>
+            <a href="#avis" onclick="handleNavClick(event, 'avis', true)">Avis</a>
+            <a href="#contact" onclick="handleNavClick(event, 'contact', true)">Contact</a>
+            <a href="#mentions-legales" onclick="handleNavClick(event, 'mentions-legales', true)"
+                class="legal-link">Mentions
                 légales</a>
-            <a href="#confidentialite" onclick="navigate('confidentialite');toggleMenu()"
+            <a href="#confidentialite" onclick="handleNavClick(event, 'confidentialite', true)"
                 class="legal-link">Confidentialité</a>
         </div>
     </header>
@@ -200,11 +201,12 @@
                             </svg>
                             Commander &middot; 07&nbsp;66&nbsp;34&nbsp;28&nbsp;48
                         </a>
-                        <a href="#menu" class="h-btn h-btn-secondary" onclick="navigate('menu')">Voir la carte</a>
+                        <a href="#menu" class="h-btn h-btn-secondary" onclick="handleNavClick(event, 'menu')">Voir la
+                            carte</a>
                     </div>
                     <div class="h-hero-trust">
                         <span class="h-trust-pill h-trust-stars"
-                            onclick="navigate('avis')">&#9733;&#9733;&#9733;&#9733;&#9733; 70 avis</span>
+                            onclick="handleNavClick(event, 'avis')">&#9733;&#9733;&#9733;&#9733;&#9733; 70 avis</span>
                         <span class="h-trust-pill">Lun–Ven &middot; 11h–14h30</span>
                         <span class="h-trust-pill">Frites fraîches maison</span>
                     </div>
@@ -234,7 +236,8 @@
                         </blockquote>
                     </div>
                     <div class="h-section-cta">
-                        <button class="h-btn h-btn-primary" onclick="navigate('avis')">Voir tous les avis</button>
+                        <button class="h-btn h-btn-primary" onclick="handleNavClick(event, 'avis')">Voir tous les
+                            avis</button>
                     </div>
                 </div>
             </section>
@@ -258,7 +261,8 @@
                                 <p>Fromagère maison, frites fraîches, 1 viande au choix. Calé jusqu’à la reprise.</p>
                                 <div class="h-best-foot">
                                     <strong>Dès 7,50&thinsp;€</strong>
-                                    <a href="#menu" onclick="navigate('menu')" class="h-link">Voir les tacos</a>
+                                    <a href="#menu" onclick="handleNavClick(event, 'menu')" class="h-link">Voir les
+                                        tacos</a>
                                 </div>
                             </div>
                         </article>
@@ -272,7 +276,8 @@
                                 <p>Bun toasté, steak, cheddar fondant. Un vrai repas, pas un encas.</p>
                                 <div class="h-best-foot">
                                     <strong>Dès 8&thinsp;€</strong>
-                                    <a href="#menu" onclick="navigate('menu')" class="h-link">Voir les burgers</a>
+                                    <a href="#menu" onclick="handleNavClick(event, 'menu')" class="h-link">Voir les
+                                        burgers</a>
                                 </div>
                             </div>
                         </article>
@@ -286,7 +291,8 @@
                                 <p>Chaud, croustillant, bien garni. La bonne option quand on veut aller vite.</p>
                                 <div class="h-best-foot">
                                     <strong>Dès 5,50&thinsp;€</strong>
-                                    <a href="#menu" onclick="navigate('menu')" class="h-link">Explorer la carte</a>
+                                    <a href="#menu" onclick="handleNavClick(event, 'menu')" class="h-link">Explorer la
+                                        carte</a>
                                 </div>
                             </div>
                         </article>
@@ -434,7 +440,8 @@
                         </article>
                     </div>
                     <div class="h-section-cta">
-                        <a href="#menu" class="h-btn h-btn-primary" onclick="navigate('menu')">Voir toute la carte</a>
+                        <a href="#menu" class="h-btn h-btn-primary" onclick="handleNavClick(event, 'menu')">Voir toute
+                            la carte</a>
                         <a href="tel:+33766342848" class="h-btn h-btn-outline"
                             onclick="trackEvent('call_formules')">Appeler pour commander</a>
                     </div>
@@ -569,7 +576,8 @@
                                 <a href="https://wa.me/33766342848?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20prestation%20priv%C3%A9e"
                                     target="_blank" rel="noopener" class="h-btn h-btn-primary"
                                     onclick="trackEvent('whatsapp_prestations')">Demander un devis</a>
-                                <button class="h-btn h-btn-outline" onclick="navigate('prestations')">En savoir
+                                <button class="h-btn h-btn-outline" onclick="handleNavClick(event, 'prestations')">En
+                                    savoir
                                     plus</button>
                             </div>
                         </div>
@@ -628,7 +636,8 @@
                             </a>
                             <a href="https://wa.me/33766342848" target="_blank" rel="noopener"
                                 class="h-btn h-btn-whatsapp" onclick="trackEvent('whatsapp_final')">WhatsApp</a>
-                            <button class="h-btn h-btn-ghost" onclick="navigate('contact')">Toutes les infos</button>
+                            <button class="h-btn h-btn-ghost" onclick="handleNavClick(event, 'contact')">Toutes les
+                                infos</button>
                         </div>
                     </div>
                 </div>
@@ -1461,7 +1470,8 @@
                 <div class="allergen-legal-note">
                     <p><strong>Allergènes :</strong> Si vous souffrez d'une allergie alimentaire, merci de nous en
                         informer au moment de votre commande. Liste complète des allergènes disponible sur demande.</p>
-                    <a href="#allergenes" onclick="navigate('allergenes')" class="btn-text">Voir la liste complète des
+                    <a href="#allergenes" onclick="handleNavClick(event, 'allergenes')" class="btn-text">Voir la liste
+                        complète des
                         allergènes &rarr;</a>
                 </div>
 
@@ -1503,7 +1513,7 @@
                 <div class="avis-cta-block">
                     <h3>Vous avez mangé chez nous ?</h3>
                     <p>Votre avis aide de nouveaux clients à nous découvrir et nous motive à nous améliorer.</p>
-                    <button class="btn-primary btn-large" onclick="navigate('satisfaction')">
+                    <button class="btn-primary btn-large" onclick="handleNavClick(event, 'satisfaction')">
                         Donner mon avis
                     </button>
                 </div>
@@ -1720,8 +1730,9 @@
                     <p>Vous avez été redirigé vers Google pour laisser votre avis.<br>C'est grâce à vous que l'adresse
                         continue de grandir.</p>
                     <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.8rem;align-items:center;">
-                        <button class="btn-primary" onclick="navigate('accueil')">Retour à l'accueil</button>
-                        <button class="btn-secondary" onclick="navigate('menu')">Voir le menu</button>
+                        <button class="btn-primary" onclick="handleNavClick(event, 'accueil')">Retour à
+                            l'accueil</button>
+                        <button class="btn-secondary" onclick="handleNavClick(event, 'menu')">Voir le menu</button>
                     </div>
                 </div>
             </div>
@@ -1736,7 +1747,8 @@
                     <h2>Retour bien reçu !</h2>
                     <p>Merci pour votre retour. Nous allons l'analyser et faire en sorte que votre prochaine visite soit
                         parfaite.</p>
-                    <button class="btn-primary" onclick="navigate('accueil')" style="margin-top:1.5rem;">Retour à
+                    <button class="btn-primary" onclick="handleNavClick(event, 'accueil')"
+                        style="margin-top:1.5rem;">Retour à
                         l'accueil</button>
                 </div>
             </div>
@@ -2146,7 +2158,8 @@
                     <div class="satisfaction-logo">404</div>
                     <h2>Page introuvable</h2>
                     <p>Cette page n'existe pas. Revenez à l'accueil !</p>
-                    <button class="btn-primary" onclick="navigate('accueil')" style="margin-top:1.5rem;">Retour à
+                    <button class="btn-primary" onclick="handleNavClick(event, 'accueil')"
+                        style="margin-top:1.5rem;">Retour à
                         l'accueil</button>
                 </div>
             </div>
@@ -2165,9 +2178,9 @@
                 </div>
             </div>
             <div class="footer-links">
-                <a onclick="navigate('mentions-legales')">Mentions légales</a>
-                <a onclick="navigate('confidentialite')">Confidentialité</a>
-                <a onclick="navigate('allergenes')">Allergènes</a>
+                <a onclick="handleNavClick(event, 'mentions-legales')">Mentions légales</a>
+                <a onclick="handleNavClick(event, 'confidentialite')">Confidentialité</a>
+                <a onclick="handleNavClick(event, 'allergenes')">Allergènes</a>
             </div>
             <div class="footer-contact">
                 <a href="tel:+33766342848" onclick="trackEvent('call_footer')">07 66 34 28 48</a>

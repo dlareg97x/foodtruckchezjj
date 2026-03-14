@@ -58,9 +58,22 @@ function navigate(pageId, pushState = true) {
 
 // Gestion bouton retour navigateur
 window.addEventListener('popstate', (e) => {
-    const page = (e.state && e.state.page) || 'accueil';
+    const hash = location.hash.replace('#', '');
+    const page = (e.state && e.state.page) || hash || 'accueil';
     navigate(page, false);
 });
+
+// Wrapper navigation : empêche le comportement natif des liens href="#..."
+function handleNavClick(event, pageId, closeMenu = false) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    navigate(pageId);
+    if (closeMenu) {
+        document.getElementById('mobile-nav')?.classList.add('hidden');
+    }
+}
 
 // Init : lire le hash au chargement
 function initRouter() {
