@@ -3562,14 +3562,53 @@ body {
 
 
 /* Responsive featured */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
     .menu-item.menu-item-featured {
-        grid-template-columns: 90px 1fr auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        align-items: stretch;
     }
 
-    .menu-item-featured-img,
+    .menu-item-featured-img {
+        width: 100%;
+        height: 180px;
+        min-height: 180px;
+    }
+
     .menu-item-featured-img img {
-        min-height: 90px;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+    .menu-item-featured-body {
+        padding: 0.9rem 1rem 0.55rem;
+    }
+
+    .menu-item.menu-item-featured .menu-item-price {
+        padding: 0 1rem 1rem;
+        align-self: start;
+        justify-self: start;
+        font-size: 1.25rem;
+        line-height: 1;
+    }
+
+    .menu-item.menu-item-featured .menu-item-name {
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+
+    .menu-item.menu-item-featured .menu-item-desc {
+        font-size: 0.8rem;
+        line-height: 1.45;
+    }
+
+    .menu-item-featured-badge {
+        margin-bottom: 0.35rem;
     }
 
     .menu-cat-header {
@@ -5092,5 +5131,48 @@ body {
         font-size: 0.78rem;
         padding: 0.48rem 0.82rem;
         white-space: nowrap;
+    }
+}
+
+
+/* ══════════════════════════════════════════════════
+   FOOTER — POWERED BY
+══════════════════════════════════════════════════ */
+
+.footer-powered {
+    display: block;
+    margin-top: 0.55rem;
+    color: rgba(213, 183, 160, 0.72);
+    font-size: 0.84rem;
+    text-align: center;
+}
+
+.footer-powered a {
+    color: rgba(240, 179, 71, 0.92);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-powered a:hover {
+    color: #f0b347;
+    text-decoration: underline;
+}
+
+
+/* ══════════════════════════════════════════════════
+   BANNIÈRE COOKIES — FIX RECOUVREMENT
+   Quand la bannière est visible, body reçoit
+   la classe .rgpd-visible via JS.
+   → on pousse le footer et la sticky bar vers le haut.
+══════════════════════════════════════════════════ */
+
+@media (max-width: 899px) {
+    body.rgpd-visible .h-sticky-bar {
+        bottom: var(--rgpd-h, 120px);
+    }
+
+    body.rgpd-visible main,
+    body.rgpd-visible footer {
+        padding-bottom: var(--rgpd-h, 120px);
     }
 }
