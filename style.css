@@ -925,6 +925,22 @@ button {
     line-height: 1.6;
 }
 
+.non-halal-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.08em 0.5em;
+    border-radius: 4px;
+    background: rgba(224, 103, 75, 0.14);
+    color: var(--red);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 1px solid rgba(224, 103, 75, 0.22);
+    vertical-align: middle;
+    line-height: 1.6;
+}
+
 .menu-item-desc {
     font-size: 0.79rem;
     color: var(--muted);
