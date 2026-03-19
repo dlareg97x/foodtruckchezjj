@@ -94,6 +94,21 @@ function checkHoraires() {
     const text = document.getElementById('horaire-text');
     const statusLive = document.getElementById('status-live');
 
+    const JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+
+    // Trouve le prochain jour d'ouverture
+    function prochainJour() {
+        for (let i = 1; i <= 7; i++) {
+            const nextDay = (day + i) % 7;
+            if (CONFIG.horaires[nextDay]) {
+                const h = CONFIG.horaires[nextDay][0];
+                const label = i === 1 ? 'demain' : JOURS[nextDay];
+                return `${label} à ${Math.floor(h / 60)}h${String(h % 60).padStart(2, '0')}`;
+            }
+        }
+        return 'bientôt';
+    }
+
     let isOpen = false;
     let message = '';
 
@@ -101,13 +116,11 @@ function checkHoraires() {
         isOpen = true;
         const ferme = `${Math.floor(horaire[1] / 60)}h${String(horaire[1] % 60).padStart(2, '0')}`;
         message = `Ouvert · Ferme à ${ferme}`;
-    } else if (horaire) {
+    } else if (horaire && minutes < horaire[0]) {
         const ouvre = `${Math.floor(horaire[0] / 60)}h${String(horaire[0] % 60).padStart(2, '0')}`;
-        message = minutes < horaire[0]
-            ? `Ouvre à ${ouvre} aujourd'hui`
-            : 'Fermé · Ouvre lundi à 11h';
+        message = `Ouvre à ${ouvre} aujourd'hui`;
     } else {
-        message = 'Fermé aujourd\'hui';
+        message = `Fermé · Ouvre ${prochainJour()}`;
     }
 
     if (dot) { dot.className = `dot ${isOpen ? 'open' : 'closed'}`; }
@@ -115,7 +128,7 @@ function checkHoraires() {
 
     if (statusLive) {
         statusLive.className = `status-live ${isOpen ? 'open' : 'closed'}`;
-        statusLive.textContent = isOpen ? '🟢 Ouvert maintenant' : '🔴 Actuellement fermé';
+        statusLive.textContent = isOpen ? '● Ouvert maintenant' : '● Actuellement fermé';
     }
 }
 
