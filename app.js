@@ -15,11 +15,11 @@ const CONFIG = {
     horaires: {
         // [ouverture, fermeture] en minutes depuis minuit (null = fermé)
         0: null,          // Dimanche
-        1: [660, 870],    // Lundi     11h00 – 14h30
-        2: [660, 870],    // Mardi
-        3: [660, 870],    // Mercredi
-        4: [660, 870],    // Jeudi
-        5: [660, 870],    // Vendredi
+        1: [660, 810],    // Lundi     11h00 – 13h30
+        2: [660, 810],    // Mardi
+        3: [660, 810],    // Mercredi
+        4: [660, 810],    // Jeudi
+        5: [660, 810],    // Vendredi
         6: null,          // Samedi
     }
 };
