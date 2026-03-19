@@ -485,7 +485,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
-    background: linear-gradient(135deg, #e86830 0%, #c74e1c 100%);
+    background: linear-gradient(135deg, #e8009e 0%, #9c0055 100%);
     color: white;
     padding: 0.7rem 1.4rem;
     border-radius: 999px;
@@ -495,12 +495,12 @@ button {
     transition: filter 0.2s, box-shadow 0.2s, transform 0.15s;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(199, 78, 28, 0.25);
+    box-shadow: 0 4px 14px rgba(212, 0, 108, 0.25);
 }
 
 .btn-primary:hover {
     filter: brightness(1.07);
-    box-shadow: 0 6px 20px rgba(199, 78, 28, 0.35);
+    box-shadow: 0 6px 20px rgba(212, 0, 108, 0.35);
     transform: translateY(-1px);
 }
 
@@ -1119,7 +1119,7 @@ button {
     margin-top: 0.8rem;
     padding: 0.75rem 1rem;
     background: rgba(255, 244, 234, 0.025);
-    border-left: 2px solid rgba(211, 90, 36, 0.32);
+    border-left: 2px solid rgba(212, 0, 108, 0.32);
     border-radius: 0 10px 10px 0;
 }
 
@@ -2523,7 +2523,7 @@ body {
 }
 
 .sticky-call {
-    background: linear-gradient(135deg, #ff6b35 0%, #d94424 100%);
+    background: linear-gradient(135deg, #e8009e 0%, #9c0055 100%);
 }
 
 .sticky-itinerary {
@@ -2631,7 +2631,7 @@ body {
 body {
     background-image:
         radial-gradient(circle at top right, rgba(240, 179, 71, 0.10), transparent 26%),
-        radial-gradient(circle at top left, rgba(211, 90, 36, 0.12), transparent 30%),
+        radial-gradient(circle at top left, rgba(212, 0, 108, 0.12), transparent 30%),
         linear-gradient(180deg, #1a120e 0%, #140e0b 100%);
     color: var(--text);
 }
@@ -2681,7 +2681,7 @@ body {
 }
 
 .btn-accept {
-    background: linear-gradient(135deg, #e86830 0%, #c74e1c 100%);
+    background: linear-gradient(135deg, #e8009e 0%, #9c0055 100%);
 }
 
 .home-section {
@@ -3008,8 +3008,8 @@ body {
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: rgba(211, 90, 36, 0.18);
-    border-color: rgba(211, 90, 36, 0.35);
+    background: rgba(212, 0, 108, 0.18);
+    border-color: rgba(212, 0, 108, 0.35);
     color: #fff4ea;
 }
 
@@ -3030,7 +3030,7 @@ body {
 .formule-price,
 .score-num,
 .reviews-score-box strong {
-    color: #f0b347;
+    color: #ff6eb4;
 }
 
 .contact-card {
@@ -3415,7 +3415,7 @@ body {
     padding: 0;
     overflow: hidden;
     border-radius: 0.875rem;
-    border: 1.5px solid rgba(211, 90, 36, 0.28);
+    border: 1.5px solid rgba(212, 0, 108, 0.28);
     background: #2a1d17;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.28);
     transition: box-shadow 0.2s, transform 0.2s;
@@ -4017,14 +4017,14 @@ body {
 }
 
 .h-btn-primary {
-    background: linear-gradient(135deg, #ff6b35 0%, #d94424 100%);
+    background: linear-gradient(135deg, #e8009e 0%, #9c0055 100%);
     color: #fff;
-    box-shadow: 0 4px 18px rgba(211, 90, 36, 0.35);
+    box-shadow: 0 4px 18px rgba(212, 0, 108, 0.35);
 }
 
 .h-btn-primary:hover {
     filter: brightness(1.08);
-    box-shadow: 0 6px 24px rgba(211, 90, 36, 0.45);
+    box-shadow: 0 6px 24px rgba(212, 0, 108, 0.45);
     transform: translateY(-1px);
 }
 
@@ -4306,7 +4306,7 @@ body {
     left: 0.8rem;
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
-    background: linear-gradient(135deg, #ff6b35, #d94424);
+    background: linear-gradient(135deg, #e8009e, #9c0055);
     color: #fff;
     font-size: 0.75rem;
     font-weight: 700;
@@ -4398,7 +4398,7 @@ body {
 
 /* ---------- ⑤ COMMANDER EN 30 SECONDES ---------- */
 .h-howto {
-    background: linear-gradient(180deg, rgba(211, 90, 36, 0.06) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(212, 0, 108, 0.06) 0%, transparent 100%);
 }
 
 .h-howto-steps {
@@ -4418,13 +4418,13 @@ body {
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ff6b35 0%, #d94424 100%);
+    background: linear-gradient(135deg, #e8009e 0%, #9c0055 100%);
     color: #fff;
     font-family: 'Syne', sans-serif;
     font-size: 1.3rem;
     font-weight: 800;
     margin-bottom: 0.8rem;
-    box-shadow: 0 4px 18px rgba(211, 90, 36, 0.3);
+    box-shadow: 0 4px 18px rgba(212, 0, 108, 0.3);
 }
 
 .h-step h3 {
@@ -4695,7 +4695,7 @@ body {
 /* ---------- ⑩ CONTACT BAND ---------- */
 .h-contact-band {
     padding: 4rem 0 5rem;
-    background: linear-gradient(180deg, rgba(211, 90, 36, 0.08) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(212, 0, 108, 0.08) 0%, transparent 100%);
 }
 
 .h-contact-inner {
@@ -5110,7 +5110,7 @@ body {
 }
 
 .footer-powered a:hover {
-    color: #f0b347;
+    color: #ff6eb4;
     text-decoration: underline;
 }
 
